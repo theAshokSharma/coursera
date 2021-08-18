@@ -1,9 +1,10 @@
 #!/usr/bin/env python3
+
 import os, sys
 import requests
 
-url = "http://localhost/upload/"
-
+url = "http://localhost/upload/"  # '/media/images/'
+imgage_location = '/week4/supplier-data/images/'  
 
 def Uplodad_Image(imgfile_with_path):
     with open(imgfile_with_path, 'rb') as img_file:
@@ -12,14 +13,11 @@ def Uplodad_Image(imgfile_with_path):
         print(imgfile_with_path)
 
 def Uplodad_Image_all():
-    img_file_dir = os.getcwd() + '/week4/supplier-data/images/'
+    img_file_dir = os.getcwd() + imgage_location
     for files in os.listdir(img_file_dir):
         if files.endswith(".jpeg"):
             imgfile_with_path = os.path.join(img_file_dir, files)
             Uplodad_Image(imgfile_with_path)
 
-def main():
-    Uplodad_Image_all()
-
 if __name__ == '__main__':
-    main()
+    Uplodad_Image_all()

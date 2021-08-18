@@ -1,6 +1,10 @@
 #!/usr/bin/env python3
+
 from PIL import Image
 import os
+
+src_location = '/week4/supplier-data/images/'   # '/media/images/'
+dest_location = '/week4/supplier-data/images/'  # '/media/images/'
 
 def ChangeImage(srcfile, dest):
 
@@ -20,16 +24,13 @@ def ChangeImage(srcfile, dest):
 
 def ChangeImgage_all():
     print (os.getcwd())
-    srcfile = os.getcwd() + '/week4/supplier-data/images/'
-    dest = os.getcwd() + '/week4/supplier-data/images/'
+    srcfile = os.getcwd() + src_location
+    dest = os.getcwd() + dest_location
 
     for files in os.listdir(srcfile):
         imgfile_with_path = os.path.join(srcfile, files)
         if imgfile_with_path.endswith(".tiff"):
             ChangeImage(imgfile_with_path, dest)
 
-def main():
-    ChangeImgage_all()
-
 if __name__ == '__main__':
-    main()
+    ChangeImgage_all()

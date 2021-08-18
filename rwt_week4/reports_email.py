@@ -1,13 +1,14 @@
 #!/usr/bin/env python3
+
 import os
 import datetime
 import reports
+import emails
 
 current_date = datetime.datetime.now().strftime('%b %d, %Y')
 
-description_dir = os.getcwd() + '/week4/supplier-data/descriptions/'
-pdf_file = '/Users/ashar11/Downloads/processed.pdf'
-
+desc_location = os.getcwd() + '/week4/supplier-data/descriptions/'
+pdf_file = '/Users/ashar11/Downloads/processed.pdf'   # '/tmp/processed.pdf'
 
 def extract_data_list(filename):
     data_list = []
@@ -21,8 +22,8 @@ def extract_data_list(filename):
 
 def extract_data_and_report():
     fruit_list = []
-    for desc in os.listdir(description_dir):
-        data_list = extract_data_list(os.path.join(description_dir, desc))
+    for desc in os.listdir(desc_location):
+        data_list = extract_data_list(os.path.join(desc_location, desc))
         fruit_list.append(data_list)
 
     # Sort the list       
@@ -35,14 +36,16 @@ def extract_data_and_report():
         weight = "weight: " + list[1]
         description += name + "<br/>" + weight + "<br/><br/>"
     title = "Processed Update on " + current_date 
-    
-    reports.generate_report(pdf_file,title, description)    
+    reports.generate_report(pdf_file,title, description) 
 
-
-def main():
-    print("Extracting description from")
-    extract_data_and_report()
-    print("Done.....")
 
 if __name__ == '__main__':
-    main()
+    extract_data_and_report()
+
+    sender = 'automation@example.com'
+    receiver = 'username@example.com'
+    subject = 'Upload Completed - Online Fruit Store'
+    body = 'All fruits are uploaded to our website successfully. A detailed list is attached to this email.'
+    
+    message = emails.generate_email(sender,receiver, subject, body, pdf_file)
+    emails.send_email(message)

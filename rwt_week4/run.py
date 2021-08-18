@@ -1,13 +1,13 @@
-#! /usr/bin/env python3
+#!/usr/bin/env python3
 
 import os
 import requests
 import locale
 import re
 
-description_dir = os.getcwd() + '/week4/supplier-data/descriptions/'
+desc_location = os.getcwd() + '/week4/supplier-data/descriptions/'  
 data_col = ['name', 'weight', 'Description']
-url = "http://localhost/upload/"
+url = "http://localhost/upload/"   # '../fruits'
 
 def extract_description_from_file(filename):
     with open(filename) as file:
@@ -24,8 +24,8 @@ def extract_description_from_file(filename):
     return data_dict
 
 def extract_description_and_post():
-    for desc in os.listdir(description_dir):
-        data = extract_description_from_file(os.path.join(description_dir, desc))
+    for desc in os.listdir(desc_location):
+        data = extract_description_from_file(os.path.join(desc_location, desc))
         print (data)
 #        response = requests.post(url, json=data)
 #        response.raise_for_status()
