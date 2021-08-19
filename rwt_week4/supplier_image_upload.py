@@ -3,8 +3,8 @@
 import os, sys
 import requests
 
-url = "http://localhost/upload/"  # '/media/images/'
-imgage_location = '/week4/supplier-data/images/'  
+url = 'http://localhost/upload/'
+imgage_location = 'supplier-data/images/'
 
 def Uplodad_Image(imgfile_with_path):
     with open(imgfile_with_path, 'rb') as img_file:
@@ -13,7 +13,7 @@ def Uplodad_Image(imgfile_with_path):
         print(imgfile_with_path)
 
 def Uplodad_Image_all():
-    img_file_dir = os.getcwd() + imgage_location
+    img_file_dir = imgage_location
     for files in os.listdir(img_file_dir):
         if files.endswith(".jpeg"):
             imgfile_with_path = os.path.join(img_file_dir, files)

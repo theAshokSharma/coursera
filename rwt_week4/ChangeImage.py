@@ -3,8 +3,8 @@
 from PIL import Image
 import os
 
-src_location = '/week4/supplier-data/images/'   # '/media/images/'
-dest_location = '/week4/supplier-data/images/'  # '/media/images/'
+src_location = 'supplier-data/images/'
+dest_location =  'supplier-data/images/'
 
 def ChangeImage(srcfile, dest):
 
@@ -23,9 +23,9 @@ def ChangeImage(srcfile, dest):
             print(e)
 
 def ChangeImgage_all():
-    print (os.getcwd())
-    srcfile = os.getcwd() + src_location
-    dest = os.getcwd() + dest_location
+
+    srcfile = src_location
+    dest = dest_location
 
     for files in os.listdir(srcfile):
         imgfile_with_path = os.path.join(srcfile, files)

@@ -5,9 +5,9 @@ import requests
 import locale
 import re
 
-desc_location = os.getcwd() + '/week4/supplier-data/descriptions/'  
-data_col = ['name', 'weight', 'Description']
-url = "http://localhost/upload/"   # '../fruits'
+desc_location = 'supplier-data/descriptions/'
+data_col = ['name', 'weight', 'description']
+url = 'http://localhost/fruits/'
 
 def extract_description_from_file(filename):
     with open(filename) as file:
@@ -27,11 +27,11 @@ def extract_description_and_post():
     for desc in os.listdir(desc_location):
         data = extract_description_from_file(os.path.join(desc_location, desc))
         print (data)
-#        response = requests.post(url, json=data)
-#        response.raise_for_status()
+        response = requests.post(url, json=data)
+        response.raise_for_status()
 
 def main():
-    print("Extracting description from")
+    print("Extracting description...")
     extract_description_and_post()
     print("Done.....")
 

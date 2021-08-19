@@ -26,12 +26,12 @@ def alert_localhost():
 
 def send_email_alert(error):
     print (error)
-    # sender = "automation@example.com"
-    # receiver = "{}@example.com".format(os.environ["USER"])
-    # subject = error
-    # body = "Please check your system and resolve the issue as soon as possible."
-    # message = emails.generate_email(sender, receiver, subject, body, "")
-    # emails.send_email(message)
+    sender = 'automation@example.com'
+    receiver = 'student-00-7e6ad623c74c@example.com'
+    subject = error
+    body = "Please check your system and resolve the issue as soon as possible."
+    message = emails.generate_email(sender, receiver, subject, body, "")
+    emails.send_email(message)
 
 if alert_cpu_usage():
     subject = "Error - CPU usage is over 80%"

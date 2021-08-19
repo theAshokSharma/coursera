@@ -7,8 +7,8 @@ import emails
 
 current_date = datetime.datetime.now().strftime('%b %d, %Y')
 
-desc_location = os.getcwd() + '/week4/supplier-data/descriptions/'
-pdf_file = '/Users/ashar11/Downloads/processed.pdf'   # '/tmp/processed.pdf'
+desc_location = 'supplier-data/descriptions/'
+pdf_file = '/tmp/processed.pdf'
 
 def extract_data_list(filename):
     data_list = []
@@ -26,8 +26,8 @@ def extract_data_and_report():
         data_list = extract_data_list(os.path.join(desc_location, desc))
         fruit_list.append(data_list)
 
-    # Sort the list       
-    fruit_list.sort(key=lambda a: a[0], reverse=False)    
+    # Sort the list
+    fruit_list.sort(key=lambda a: a[0], reverse=False)
 
     # build data for generating PDF doc
     description = ""
@@ -35,15 +35,15 @@ def extract_data_and_report():
         name = "name: " + list[0]
         weight = "weight: " + list[1]
         description += name + "<br/>" + weight + "<br/><br/>"
-    title = "Processed Update on " + current_date 
-    reports.generate_report(pdf_file,title, description) 
+    title = "Processed Update on " + current_date
+    reports.generate_report(pdf_file,title, description)
 
 
 if __name__ == '__main__':
     extract_data_and_report()
 
     sender = 'automation@example.com'
-    receiver = 'username@example.com'
+    receiver = 'student-00-7e6ad623c74c@example.com'
     subject = 'Upload Completed - Online Fruit Store'
     body = 'All fruits are uploaded to our website successfully. A detailed list is attached to this email.'
     
